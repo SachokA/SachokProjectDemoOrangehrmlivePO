@@ -21,8 +21,6 @@ public class LoginTest extends BaseTest {
         LoginInfo loginInfo = JsonFileReader.readJsonFile("src/test/java/tests/LoginTestData.json", LoginInfo.class);
         log.debug("User name: "+ loginInfo.getUserName());
         log.debug("User password: "+ loginInfo.getPassword());
-//        final String userName = "Admin";
-//        final String userPassword = "admin123";
         final String expectedTitle = "OrangeHRM";
         final String expectedURL = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
 

@@ -65,7 +65,5 @@ public class UpdatingFormInfoTest extends BaseTest {
                 contactDetailsInfo.getHomeNumberTelephone(), "Afghanistan");
 
         Assertions.assertEquals(expectedResult, actualResult);
-
-
     }
 }
