@@ -1,10 +1,6 @@
 package tests;
 
 import base.BaseTest;
-import gui.pages.ResetPasswordPage;
-import gui.steps.LoginSteps;
-import gui.steps.ResetPasswordLinkSentSuccessfullySteps;
-import gui.steps.ResetPasswordPageSteps;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,11 +11,6 @@ public class ResetPasswordTest extends BaseTest {
     @Test
     public void validationFormResetPasswordTest() {
 
-        LoginSteps loginSteps = new LoginSteps();
-        ResetPasswordPageSteps resetPasswordPageSteps = new ResetPasswordPageSteps();
-        ResetPasswordLinkSentSuccessfullySteps resetPasswordLinkSentSuccessfullySteps = new ResetPasswordLinkSentSuccessfullySteps();
-
-        ResetPasswordPage resetPasswordPage = new ResetPasswordPage();
 
         final String expectedURLForgottenPassword = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
         final String expectedTitleFormForgottenPassword = "Reset Password";
@@ -44,9 +35,6 @@ public class ResetPasswordTest extends BaseTest {
     @Test
     public void changedPasswordTest() {
         final String userName = "Admin";
-        LoginSteps loginSteps = new LoginSteps();
-        ResetPasswordPageSteps resetPasswordPageSteps = new ResetPasswordPageSteps();
-        ResetPasswordLinkSentSuccessfullySteps resetPasswordLinkSentSuccessfullySteps = new ResetPasswordLinkSentSuccessfullySteps();
 
         log.info("Open URL");
         loginSteps.open();
@@ -61,5 +49,4 @@ public class ResetPasswordTest extends BaseTest {
 
         Assertions.assertEquals("Reset Password link sent successfully", actualTitleForm);
     }
-
 }

@@ -1,8 +1,6 @@
 package tests;
 
 import base.BaseTest;
-import gui.steps.LoginSteps;
-
 import models.LoginInfo;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
@@ -16,18 +14,16 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginTestWithValidData() {
 
-        LoginSteps loginSteps = new LoginSteps();
-
         LoginInfo loginInfo = JsonFileReader.readJsonFile("src/test/java/tests/LoginTestData.json", LoginInfo.class);
-        log.debug("User name: "+ loginInfo.getUserName());
-        log.debug("User password: "+ loginInfo.getPassword());
+        log.debug("User name: " + loginInfo.getUserName());
+        log.debug("User password: " + loginInfo.getPassword());
         final String expectedTitle = "OrangeHRM";
         final String expectedURL = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
 
         log.info("Open URL");
         loginSteps.open();
-        log.info("Set user Credential useName and password: "+loginInfo.getUserName() + " , " +loginInfo.getPassword());
-        loginSteps.setUserCredential(loginInfo.getUserName(),loginInfo.getPassword());
+        log.info("Set user Credential useName and password: " + loginInfo.getUserName() + " , " + loginInfo.getPassword());
+        loginSteps.setUserCredential(loginInfo.getUserName(), loginInfo.getPassword());
         String actualTitle = loginSteps.getPageTitle();
         String actualURL = loginSteps.getPageURL();
         log.info("Actual title: " + actualTitle);
@@ -40,19 +36,15 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginTestWithInvalidData() {
 
-        LoginSteps loginSteps = new LoginSteps();
-
         final String userName = "SomeMan";
         final String userPassword = "admin123";
 
         log.info("Open URL");
         loginSteps.open();
-        log.info("Set user Credential useName and password: "+userName + " , " +userPassword);
+        log.info("Set user Credential useName and password: " + userName + " , " + userPassword);
         loginSteps.setUserCredential(userName, userPassword);
 
         Assertions.assertTrue(loginSteps.isPresentElement());
         Assertions.assertEquals("Invalid credentials", loginSteps.getMessage());
     }
-
-
 }

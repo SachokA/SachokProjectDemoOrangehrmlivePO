@@ -1,30 +1,33 @@
 package base;
 
 import gui.core.WebDriverFactory;
-import gui.pages.LoginPage;
 import gui.pages.ResetPasswordPage;
-import gui.steps.LoginSteps;
-import gui.steps.ResetPasswordLinkSentSuccessfullySteps;
-import gui.steps.ResetPasswordPageSteps;
+import gui.steps.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static gui.core.WebDriverInstance.driverInstance;
 
 public abstract class BaseTest {
+    public static LoginSteps loginSteps;
+    public static ResetPasswordPageSteps resetPasswordPageSteps;
+    public static ResetPasswordPage resetPasswordPage;
+    public static ResetPasswordLinkSentSuccessfullySteps resetPasswordLinkSentSuccessfullySteps;
+    public static DashboardSteps dashboardSteps;
+    public static ContactDetailsSteps contactDetailsSteps;
 
     @BeforeEach
     public void setUp() {
         WebDriver driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
-//        ....driver settings
         driverInstance().setDriver(driver);
+        loginSteps = new LoginSteps();
+        resetPasswordPageSteps = new ResetPasswordPageSteps();
+        resetPasswordPage = new ResetPasswordPage();
+        resetPasswordLinkSentSuccessfullySteps = new ResetPasswordLinkSentSuccessfullySteps();
+        dashboardSteps = new DashboardSteps();
+        contactDetailsSteps = new ContactDetailsSteps();
     }
 
     @AfterEach
